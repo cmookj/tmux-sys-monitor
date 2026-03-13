@@ -1,9 +1,12 @@
 # Tmux CPU & Memory Monitor
 
-This plugin is a slight modification of the great work of [hendrikmi](https://github.com/hendrikmi),
+This plugin is a slight modification of the great work of [hendrikmi](https://github.com/hendrikmi/),
 a simple yet flexible tool designed to display CPU and memory usage in the Tmux status bar.
 
 <img src="img/demo.png" alt="" style="width:100%; height:100%;"/>
+
+The functionality is mainly unchanged.  The modification is to display the level of battery and charging/discharging status using icons defined in [NerdFonts](https://www.nerdfonts.com/).  Depending the option given, this plugin displays the battery's percentage either in 10 or 3 levels.  See the `#{battery}` placeholder section below.
+
 
 ## Installation
 
