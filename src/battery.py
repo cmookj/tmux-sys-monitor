@@ -67,29 +67,57 @@ def _remap_range(value, low, high, remap_low, remap_high):
 
 def get_battery_compact():
     """Display battery percentage in a compact format"""
-    if _get_charging_status():
-        return chr(0x000F0084)
+
+    # Battery icons in Unicode which are available in NerdFonts
+    # Note that the icons for battery levels in charging is irregular.
+
+    # Level    Discharging    Charging
+    # -----    -----------    --------
+    #   0%       000F008e     000F089F
+    #  10%       000F007A     000F089C
+    #  20%       000F007B     000F0086
+    #  30%       000F007C     000F0087
+    #  40%       000F007D     000F0088
+    #  50%       000F007E     000F089D
+    #  60%       000F007F     000F0089
+    #  70%       000F0080     000F089E
+    #  80%       000F0081     000F008A
+    #  90%       000F0082     000F008B
+    # 100%       000F0079     000F0085
 
     level = psutil.sensors_battery().percent // 10
-    #   0% - 000F008e
-    #  10% - 000F007A
-    #  20% - 000F007B
-    #  30% - 000F007C
-    #  40% - 000F007D
-    #  50% - 000F007E
-    #  60% - 000F007F
-    #  70% - 000F0080
-    #  80% - 000F0081
-    #  90% - 000F0082
-    # 100% - 000F0079
 
     # Unicode characters for the battery indicator
-    if level == 0:
-        battery_indicator = chr(0x000F008e)
-    elif level == 10:
-        battery_indicator = chr(0x000F0079)
-    else:
-        battery_indicator = chr(0x000F0079 + level)
+    if _get_charging_status():
+        if level == 0:
+            battery_indicator = chr(0x000F089F)
+        elif level == 1:
+            battery_indicator = chr(0x000F089C)
+        elif level == 2:
+            battery_indicator = chr(0x000F0086)
+        elif level == 3:
+            battery_indicator = chr(0x000F0087)
+        elif level == 4:
+            battery_indicator = chr(0x000F0088)
+        elif level == 5:
+            battery_indicator = chr(0x000F089D)
+        elif level == 6:
+            battery_indicator = chr(0x000F0089)
+        elif level == 7:
+            battery_indicator = chr(0x000F089E)
+        elif level == 8:
+            battery_indicator = chr(0x000F008A)
+        elif level == 9:
+            battery_indicator = chr(0x000F008B)
+        else:
+            battery_indicator = chr(0x000F008%)
+    else: # Discharging
+        if level == 0:
+            battery_indicator = chr(0x000F008e)
+        elif level == 10:
+            battery_indicator = chr(0x000F0079)
+        else:
+            battery_indicator = chr(0x000F0079 + level)
 
     return f"{battery_indicator}"
 
