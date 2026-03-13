@@ -110,7 +110,7 @@ def get_battery_compact():
         elif level == 9:
             battery_indicator = chr(0x000F008B)
         else:
-            battery_indicator = chr(0x000F008%)
+            battery_indicator = chr(0x000F0085)
     else: # Discharging
         if level == 0:
             battery_indicator = chr(0x000F008e)
