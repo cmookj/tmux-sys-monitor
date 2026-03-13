@@ -1,6 +1,7 @@
 # Tmux CPU & Memory Monitor
 
-A simple yet flexible tool designed to display CPU and memory usage in the Tmux status bar.
+This plugin is a slight modification of the great work of [hendrikmi](https://github.com/hendrikmi),
+a simple yet flexible tool designed to display CPU and memory usage in the Tmux status bar.
 
 <img src="img/demo.png" alt="" style="width:100%; height:100%;"/>
 
@@ -9,7 +10,7 @@ A simple yet flexible tool designed to display CPU and memory usage in the Tmux 
 1. Install it with the [Tmux Plugin Manager (TPM)](https://github.com/tmux-plugins/tpm) by including the following line in your `.tmux.conf` file.
 
    ```bash
-   set -g @plugin 'hendrikmi/tmux-cpu-mem-monitor'
+   set -g @plugin 'cmookj/tmux-cpu-mem-monitor'
    ```
 
 1. Then trigger the installation with `Prefix + I`.
