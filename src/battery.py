@@ -115,20 +115,26 @@ def get_battery_simple():
 
     # Battery icons in Unicode which are available in NerdFonts
     icon_charging = [
-        0x000F089F,  #   0%
-        0x000F12A4,  #  33%
-        0x000F12A5,  #  66%
-        0x000F12A6,  # 100%
+        0x000F089F,  #  empty
+        0x000F12A4,  #  low
+        0x000F12A5,  #  medium
+        0x000F12A6,  #  high
     ]
     icon_discharging = [
-        0x000F0082,  #   0%
-        0x000F12A1,  #  33%
-        0x000F12A2,  #  66%
-        0x000F12A3,  # 100%
+        0x000F0082,  #  empty
+        0x000F12A1,  #  low
+        0x000F12A2,  #  medium
+        0x000F12A3,  #  high
     ]
 
     battery_percentage = psutil.sensors_battery().percent
-    level = battery_percentage // 33
+    level = 0
+    if battery_percentage > 80:
+        level = 3
+    elif battery_percentage > 30:
+        level = 2
+    elif battery_percentage > 10:
+        level = 1
 
     # Unicode characters for the battery indicator
     if _get_charging_status():
