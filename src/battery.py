@@ -140,6 +140,10 @@ def get_battery_simple():
 
 
 def main(args):
+    if psutil.sensors_battery() == None:
+        print()
+        return 0
+
     if args.percent:
         battery = get_battery_percent()
     elif args.time:
