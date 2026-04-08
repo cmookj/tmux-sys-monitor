@@ -60,8 +60,8 @@ For more details, see the documentation of the underlying [psutil library](https
 ### `#{gpu}` Placeholder
 **ONLY** for nvidia GPU.
 - No option: Display the utilization of GPU in percentage.
-- `-p`: Display the VRAM controller % like `#{mem}`, e.g., `62%`
-- `-m`: Display the VRAM used/total, like `#{mem -t}`, e.g., `2.0GB/8.0GB`
+- `-p, --mem-percent`: Display the VRAM controller % like `#{mem}`, e.g., `62%`
+- `-m, --mem-total`: Display the VRAM used/total, like `#{mem -t}`, e.g., `2.0GB/8.0GB`
 
 ## Examples
 
@@ -83,26 +83,3 @@ set -g status-right " CPU: #{cpu -i 3} |  MEM: #{mem} | 󱛟 DISK: #{disk 
 
 <img src="img/cpu_mem_disk_f.png" alt="" style="width:100%; height:100%;"/>
 
-## Why Another Plugin?
-
-This plugin was created as a personal project to learn more about Tmux plugins and Python scripting. While exploring existing plugins that display CPU and memory usage, I noticed a few limitations that sparked my interest in building something exactly how I wanted it:
-
-1. **Predefined Styling:** Many of the plugins I found came with predefined styling that didn't quite match what I was looking for.
-
-2. **Missing Metrics:** Either CPU or memory metrics were missing.
-
-3. **Lack of Configurability:** I found that other plugins often didn't offer the level of configurability I wanted. For example, I wanted to add icons to the display.
-
-Overall, I prefer a minimalist approach, where I can simply use placeholders like `#{cpu}` and `#{mem}` with full flexibility to choose how they're presented.
-
-## Why Python?
-
-I chose to write this plugin in Python instead of Shell as part of my learning journey, and because of several practical reasons:
-
-- **Powerful Libraries:** Python’s [psutil](https://psutil.readthedocs.io/en/latest/#) library provides a wide range of system and process utilities that are easy to use. For example, displaying CPU usage per core (`--precpu`) is much simpler with `psutil` compared to implementing it in a shell script.
-
-- **Ease of Adaptation:** Working with Python makes it easier for me to adapt and add functionalities.
-
-- **Simplified Argument Parsing:** Python's built-in `argparse` module makes it straightforward to handle command-line arguments, allowing me to easily add and manage options like `--interval` and `--total`. Additional features of `psutil` can be easily adapted.
-
-- **Cross-Platform Compatibility:** Python with `psutil`, offers a consistent way to gather system metrics across different operating systems, which avoids dealing with the quirks of different shell environments.

@@ -32,7 +32,7 @@ setup_virtual_env() {
 
 # Updates tmux option with the cpu or mem script command.
 # Handles multiple occurrences of the same placeholder with different flags,
-# e.g. both #{gpu} and #{gpu -p} in the same status string.
+# e.g., both #{gpu} and #{gpu -p} in the same status string.
 update_placeholder() {
     local placeholder="$1"
     local option="$2"
@@ -41,7 +41,7 @@ update_placeholder() {
     option_value="$(tmux show-option -gqv "$option")"
 
     # Collect all distinct #{placeholder...} variants present in the string,
-    # sorted longest-first so that e.g. "#{gpu -p}" is replaced before "#{gpu}".
+    # sorted longest-first so that e.g., "#{gpu -p}" is replaced before "#{gpu}".
     local variants
     variants=$(printf '%s' "$option_value" \
         | grep -oE "#\\{${placeholder}[^}]*\\}" \

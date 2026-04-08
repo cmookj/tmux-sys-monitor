@@ -122,7 +122,7 @@ if __name__ == "__main__":
         "--mem-total",
         action="store_true",
         default=False,
-        help="display VRAM usage as used/total in GB  (e.g. 2.0GB/8.0GB)",
+        help="display VRAM usage as used/total in GB  (e.g., 2.0GB/8.0GB)",
     )
     group.add_argument(
         "-p",
