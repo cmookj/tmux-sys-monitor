@@ -5,16 +5,18 @@ a simple yet flexible tool designed to display CPU and memory usage in the Tmux 
 
 <img src="img/demo.png" alt="" style="width:100%; height:100%;"/>
 
-The functionality is mainly unchanged.  The modification is to display the level of battery and charging/discharging status using icons defined in [NerdFonts](https://www.nerdfonts.com/).  Depending the option given, this plugin displays the battery's percentage either in 10 or 3 levels.  See the `#{battery}` placeholder section below.
+The functionality is mainly unchanged.  The modification is to display
+* the level of battery and charging/discharging status using icons defined in [NerdFonts](https://www.nerdfonts.com/).  Depending the option given, this plugin displays the battery's percentage either in 10 or 3 levels.  See the `#{battery}` placeholder section below, and
+* the utilization of GPU/VRAM in systems with nvidia GPUs.
 
 
 ## Installation
 
 1. Install it with the [Tmux Plugin Manager (TPM)](https://github.com/tmux-plugins/tpm) by including the following line in your `.tmux.conf` file.
 
-   ```bash
-   set -g @plugin 'cmookj/tmux-cpu-mem-monitor'
-   ```
+```bash
+set -g @plugin 'cmookj/tmux-cpu-mem-monitor'
+```
 
 1. Then trigger the installation with `Prefix + I`.
 
@@ -54,6 +56,12 @@ For more details, see the documentation of the underlying [psutil library](https
 - `-f, --fun`: Display the remaining battery in a fun way.
 - `-c, --compact`: Display the battery's status (chargning/discharging & level in 10) using an icon.
 - `-s, --simple`: Display the battery's status (chargning/discharging & level in 3) using an icon.
+
+### `#{gpu}` Placeholder
+**ONLY** for nvidia GPU.
+- No option: Display the utilization of GPU in percentage.
+- `-p`: Display the VRAM controller % like `#{mem}`, e.g., `62%`
+- `-m`: Display the VRAM used/total, like `#{mem -t}`, e.g., `2.0GB/8.0GB`
 
 ## Examples
 
